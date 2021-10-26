@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Game Mania Adventure',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.red,
+        backgroundColor: Colors.black87,
+        fontFamily: "poppines"
+
       ),
       home:const SplashScreen(),
       debugShowCheckedModeBanner: false,

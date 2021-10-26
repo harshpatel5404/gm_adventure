@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      // backgroundColor: Colors.black12,
         appBar: AppBar(
           title: Text("Adventure Game"),
           centerTitle: true,
@@ -54,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         bottomNavigationBar: Obx(
           () => BottomNavyBar(
+            backgroundColor: Colors.white,
             selectedIndex: controller.currentIndex.value,
             onItemSelected: (index) {
               controller.currentIndex.value = index;

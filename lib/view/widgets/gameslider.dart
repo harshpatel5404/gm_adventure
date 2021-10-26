@@ -2,7 +2,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gm_adventure/controller/adventuregames.dart';
 import 'package:gm_adventure/controller/getcontroller.dart';
@@ -112,7 +111,7 @@ class _GameSliderState extends State<GameSlider> {
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                                        // fontWeight: FontWeight.bold,
                                       ),
                                     )
                                   : const SizedBox(),
@@ -132,43 +131,70 @@ class _GameSliderState extends State<GameSlider> {
         ),
         SliverGrid(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: 3,
           ),
           delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(10),
-              child: InkWell(
-                onTap: () {
-                  Get.to(
-                    Obx(
-                      () => adventureGameController.isLoading.value
-                          ? GameWebview(
-                              weburl: adventureGameController
-                                  .allgame[index].website)
-                          : const SizedBox(),
-                    ),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Obx(
+            return InkWell(
+              onTap: () {
+                Get.to(
+                  Obx(
                     () => adventureGameController.isLoading.value
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.network(
-                              "https://kurminfotech.in/gamemania/" +
-                                  adventureGameController.allgame[index].image,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : const Center(
-                            child: CircularProgressIndicator(),
-                          ),
+                        ? GameWebview(
+                            weburl:
+                                adventureGameController.allgame[index].website)
+                        : const SizedBox(),
                   ),
+                );
+              },
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height * .11,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Obx(
+                            () => adventureGameController.isLoading.value
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                      "https://kurminfotech.in/gamemania/" +
+                                          adventureGameController
+                                              .allgame[index].image,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                          ),
+                        ),
+                         Positioned(
+                          right: 5,
+                          top: 5,
+                          child: InkWell(
+                            onTap: (){},
+                            child: Icon(
+                              Icons.favorite_border_rounded,
+                              color: Colors.red,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: Obx(() => adventureGameController.isLoading.value
+                          ? Text(adventureGameController.allgame[index].name)
+                          : SizedBox()),
+                    ),
+                  ],
                 ),
               ),
             );
