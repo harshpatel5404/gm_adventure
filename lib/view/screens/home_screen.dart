@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gm_adventure/controller/getcontroller.dart';
+import 'package:gm_adventure/view/screens/favorite_game.dart';
 import 'package:gm_adventure/view/widgets/drawer.dart';
 import 'package:gm_adventure/view/widgets/gameslider.dart';
 
@@ -47,9 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             children: <Widget>[
             const GameSlider(),
-              Container(
-                color: Colors.red,
-              ),
+             FavoriteGameScreen()
             ],
           ),
         ),

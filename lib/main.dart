@@ -2,13 +2,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:gm_adventure/controller/favarite_controller.dart';
 import 'package:gm_adventure/controller/getcontroller.dart';
 import 'package:gm_adventure/model/favorite_model.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'view/screens/splash_screen.dart';
 
-
+FavoriteController favoriteController = Get.put(FavoriteController());
 
 
 
@@ -17,6 +18,8 @@ Future<void> main() async {
     Directory directory = await getApplicationDocumentsDirectory();
     Hive.init(directory.path);
     Hive.registerAdapter(FavoriteGameAdapter());
+    favoriteController.getFavlist();
+
     runApp(MyApp());
 }
 

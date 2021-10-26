@@ -6,11 +6,17 @@ part 'favorite_model.g.dart';
 class FavoriteGame{
  
   @HiveField(0)
-  final name;
+  final id;
  
   @HiveField(1)
+  final name;
+
+  @HiveField(2)
+  final website;
+
+  @HiveField(3)
   final image;
 
-  FavoriteGame({this.name, this.image});
+  FavoriteGame({this.id, this.website, this.name, this.image});
 }
  
