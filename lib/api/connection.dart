@@ -31,7 +31,6 @@ Future<AllGamesResponse?> getAllGame() async {
   if (response.statusCode == 200) {
     var jsonString = response.body;
     AllGamesResponse allgame =  AllGamesResponse.fromJson(jsonString);
-    print("all game ${allgame.data}");
     return allgame;
   } else {
     return null;

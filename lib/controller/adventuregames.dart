@@ -12,7 +12,6 @@ class AdventureGameController extends GetxController {
     if (game != null) {
       allgame.value = game.data!;
       isLoading.value = true;
-      print(game.data![0].website);
     }
   }
 }

@@ -60,15 +60,28 @@ class _GameSliderState extends State<GameSlider> {
                       children: <Widget>[
                         Obx(
                           () => topgamecontroller.isLoading.value
-                              ? Image.network(
-                                "https://kurminfotech.in/gamemania/" +
-                                    topgamecontroller
-                                        .topgamelist[itemIndex].image,
-                                fit: BoxFit.cover,
-                                width: 1000,
-                                height: 1000,
-                                
-                              )
+                              ? InkWell(
+                                  onTap: () {
+                                    Get.to(
+                                      Obx(
+                                        () => topgamecontroller.isLoading.value
+                                            ? GameWebview(
+                                                weburl: topgamecontroller
+                                                    .topgamelist[itemIndex]
+                                                    .website)
+                                            : const SizedBox(),
+                                      ),
+                                    );
+                                  },
+                                  child: Image.network(
+                                    "https://kurminfotech.in/gamemania/" +
+                                        topgamecontroller
+                                            .topgamelist[itemIndex].image,
+                                    fit: BoxFit.cover,
+                                    width: 1000,
+                                    height: 1000,
+                                  ),
+                                )
                               : const Center(
                                   child: CircularProgressIndicator(),
                                 ),
@@ -94,7 +107,8 @@ class _GameSliderState extends State<GameSlider> {
                             child: Obx(
                               () => topgamecontroller.isLoading.value
                                   ? Text(
-                                      topgamecontroller.topgamelist[itemIndex].name,
+                                      topgamecontroller
+                                          .topgamelist[itemIndex].name,
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20.0,
@@ -108,8 +122,6 @@ class _GameSliderState extends State<GameSlider> {
                       ],
                     )),
               );
-
-            
             },
             options: CarouselOptions(
               autoPlay: true,
@@ -128,20 +140,15 @@ class _GameSliderState extends State<GameSlider> {
               padding: const EdgeInsets.all(10),
               child: InkWell(
                 onTap: () {
-                  // adventureGameController.isLoading.value
-                  //     ? Get.to(GameWebView(
-                  //         weburl:
-                  //             adventureGameController.allgame[index].website))
-                  //     : SizedBox();
-                  // Get.to(
-                  //   Obx(
-                  //     () => adventureGameController.isLoading.value
-                  //         ? GameWebView(
-                  //             weburl: adventureGameController
-                  //                 .allgame[index].website)
-                  //         : SizedBox(),
-                  //   ),
-                  // );
+                  Get.to(
+                    Obx(
+                      () => adventureGameController.isLoading.value
+                          ? GameWebview(
+                              weburl: adventureGameController
+                                  .allgame[index].website)
+                          : const SizedBox(),
+                    ),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(
