@@ -46,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             onPageChanged: (index) {
               setState(() => controller.currentIndex.value = index);
             },
-            children: <Widget>[
-            const GameSlider(),
+            children: const <Widget>[
+            GameSlider(),
              FavoriteGameScreen()
             ],
           ),

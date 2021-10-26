@@ -26,19 +26,6 @@ class _GameSliderState extends State<GameSlider> {
   Controller controller = Get.put(Controller());
   FavoriteController favoriteController = Get.put(FavoriteController());
 
-  // List favoriteList = [];
-  // List<String> names = [];
-
-  // void getNames() {
-  //   for (var i = 0; i < FavoriteClass.favoriteList.length; i++) {
-  //     if (FavoriteClass.favoriteList != []) {
-  //       names.add(FavoriteClass.favoriteList[i].name);
-  //       print(names);
-  //     } else {
-  //       print("null");
-  //     }
-  //   }
-  // }
 
   @override
   void initState() {
