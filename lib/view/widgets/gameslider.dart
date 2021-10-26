@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'package:gm_adventure/controller/adventuregames.dart';
 import 'package:gm_adventure/controller/getcontroller.dart';
 import 'package:gm_adventure/controller/topgame.dart';
+import 'package:gm_adventure/model/favorite_model.dart';
 import 'package:gm_adventure/view/screens/gamewebview.dart';
+import 'package:hive/hive.dart';
 
 class GameSlider extends StatefulWidget {
   const GameSlider({Key? key}) : super(key: key);
@@ -36,7 +38,11 @@ class _GameSliderState extends State<GameSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    Controller controller = Get.put(Controller());
+    bool favgame = controller.isFavorite.value;
+
+    return Obx(()=> topgamecontroller.isLoading.value &&
+                    adventureGameController.isLoading.value ? CustomScrollView(
       slivers: [
         const SliverToBoxAdapter(
           child: SizedBox(
@@ -82,7 +88,7 @@ class _GameSliderState extends State<GameSlider> {
                                   ),
                                 )
                               : const Center(
-                                  child: CircularProgressIndicator(),
+                                  child: SizedBox(),
                                 ),
                         ),
                         Positioned(
@@ -172,16 +178,30 @@ class _GameSliderState extends State<GameSlider> {
                                     ),
                                   )
                                 : const Center(
-                                    child: CircularProgressIndicator(),
+                                    child: SizedBox(),
                                   ),
                           ),
                         ),
-                         Positioned(
+                        Positioned(
                           right: 5,
                           top: 5,
                           child: InkWell(
-                            onTap: (){},
-                            child: Icon(
+                            onTap: () async {
+                              controller.isFavorite.value !=
+                                  controller.isFavorite.value;
+                              print(controller.isFavorite.value);
+
+                              // var name =
+                              //     adventureGameController.allgame[index].name;
+                              // var img =
+                              //     adventureGameController.allgame[index].image;
+                              // FavoriteGame favoriteGame =
+                              //     FavoriteGame(name: name, image: img);
+                              // var box = await Hive.openBox<FavoriteGame>(
+                              //     'favoritegame');
+                              // box.add(favoriteGame);
+                            },
+                            child: const Icon(
                               Icons.favorite_border_rounded,
                               color: Colors.red,
                             ),
@@ -191,7 +211,10 @@ class _GameSliderState extends State<GameSlider> {
                     ),
                     Expanded(
                       child: Obx(() => adventureGameController.isLoading.value
-                          ? Text(adventureGameController.allgame[index].name)
+                          ? Text(
+                              adventureGameController.allgame[index].name,
+                              textAlign: TextAlign.center,
+                            )
                           : SizedBox()),
                     ),
                   ],
@@ -204,6 +227,6 @@ class _GameSliderState extends State<GameSlider> {
                   : null),
         )
       ],
-    );
+    ) : Center(child: const CircularProgressIndicator()));
   }
 }

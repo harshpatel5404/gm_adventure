@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 class Controller extends GetxController{
   var currentIndex = 0.obs;
   RxBool isIntenet = false.obs;
+  RxBool isPermission = false.obs;
+  RxBool isFavorite = false.obs;
+
 
   // Future<bool> internetConnection() async {
   //   var connectivityResult = await (Connectivity().checkConnectivity());
