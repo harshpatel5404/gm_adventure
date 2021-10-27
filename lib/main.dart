@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/controller/favarite_controller.dart';
-import 'package:gm_adventure/controller/getcontroller.dart';
-import 'package:gm_adventure/model/favorite_model.dart';
+import 'package:adventuregame/controller/favarite_controller.dart';
+import 'package:adventuregame/controller/getcontroller.dart';
+import 'package:adventuregame/model/favorite_model.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:unity_ads_plugin/unity_ads.dart';
@@ -18,7 +18,9 @@ Future<void> main() async {
   Hive.init(directory.path);
   Hive.registerAdapter(FavoriteGameAdapter());
   favoriteController.getFavlist();
-
+   SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp());
 }
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     return GetMaterialApp(
-      title: 'Game Mania Adventure',
+      title: 'Adventure Game GM',
       theme: ThemeData(
           primarySwatch: Colors.red,
           backgroundColor: Colors.black87,

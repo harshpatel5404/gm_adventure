@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gm_adventure">
+    package="com.harsh.adventuregame">
        <uses-permission android:name="android.permission.INTERNET"/>
 
  
    <application
-        android:label="gm_adventure"
+        android:label="Adventure Game GM"
         android:icon="@mipmap/ic_launcher"
     
         >

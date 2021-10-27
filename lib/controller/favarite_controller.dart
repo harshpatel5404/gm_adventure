@@ -1,5 +1,5 @@
+import 'package:adventuregame/model/favorite_model.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/model/favorite_model.dart';
 import 'package:hive/hive.dart';
 
 class FavoriteController extends GetxController {

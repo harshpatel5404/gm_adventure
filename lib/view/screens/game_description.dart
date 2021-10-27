@@ -1,7 +1,11 @@
+import 'dart:async';
+
+import 'package:adventuregame/controller/getcontroller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/controller/getcontroller.dart';
-import 'package:gm_adventure/view/widgets/drawer.dart';
+import 'package:adventuregame/controller/getcontroller.dart';
+import 'package:adventuregame/view/widgets/drawer.dart';
 import 'package:http/http.dart';
 import 'package:unity_ads_plugin/unity_ads.dart';
 
@@ -25,10 +29,11 @@ class _GameDescriptionState extends State<GameDescription> {
   Controller controller = Get.put(Controller());
 
   void loadVideoAd() async {
-    UnityAds.isReady(placementId: "video").then((value) {
+    controller.isAds.value = false;
+    UnityAds.isReady(placementId: "Rewarded_Android").then((value) {
       if (value == true) {
         UnityAds.showVideoAd(
-            placementId: "video",
+            placementId: "Rewarded_Android",
             listener: (state, args) {
               if (state == UnityAdState.complete) {
                 controller.isAds.value = true;
@@ -47,17 +52,22 @@ class _GameDescriptionState extends State<GameDescription> {
   void initState() {
     super.initState();
     UnityAds.init(
-      gameId: "3054608",
-      testMode: true,
+      gameId: "4424597",
     );
     loadVideoAd();
+
+     Timer(const Duration(seconds: 3), () {
+controller.isAds.value =true;
+     });
   }
 
   @override
   Widget build(BuildContext context) {
+   
     return Obx(
       () => controller.isAds.value
           ? Scaffold(
+            backgroundColor: Colors.white,
               appBar: AppBar(
                 title: Text("Adventure Game"),
                 centerTitle: true,
@@ -179,7 +189,7 @@ class _GameDescriptionState extends State<GameDescription> {
                                     weburl: widget.website,
                                   ),
                                 )),
-                        Container(child: UnityBannerAd(placementId: "banner")),
+                        Container(child: const UnityBannerAd(placementId: "Banner_Android")),
                       ],
                     ),
                   )

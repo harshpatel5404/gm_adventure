@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class GameWebview extends StatefulWidget {
@@ -17,10 +18,12 @@ class _GameWebviewState extends State<GameWebview> {
   void initState() {
     super.initState();
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+   
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         resizeToAvoidBottomInset: false,
       body: SafeArea(

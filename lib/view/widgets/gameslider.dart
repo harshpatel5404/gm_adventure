@@ -3,13 +3,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/controller/adventuregames.dart';
-import 'package:gm_adventure/controller/favarite_controller.dart';
-import 'package:gm_adventure/controller/getcontroller.dart';
-import 'package:gm_adventure/controller/topgame.dart';
-import 'package:gm_adventure/model/favorite_model.dart';
-import 'package:gm_adventure/view/screens/game_description.dart';
-import 'package:gm_adventure/view/screens/gamewebview.dart';
+import 'package:adventuregame/controller/adventuregames.dart';
+import 'package:adventuregame/controller/favarite_controller.dart';
+import 'package:adventuregame/controller/getcontroller.dart';
+import 'package:adventuregame/controller/topgame.dart';
+import 'package:adventuregame/model/favorite_model.dart';
+import 'package:adventuregame/view/screens/game_description.dart';
+import 'package:adventuregame/view/screens/gamewebview.dart';
 import 'package:hive/hive.dart';
 
 class GameSlider extends StatefulWidget {

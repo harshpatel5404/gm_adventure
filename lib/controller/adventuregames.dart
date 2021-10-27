@@ -1,7 +1,6 @@
+import 'package:adventuregame/api/connection.dart';
+import 'package:adventuregame/model/allgameresponse.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/api/connection.dart';
-import 'package:gm_adventure/model/allgameresponse.dart';
-import 'package:gm_adventure/model/topgamesresponse.dart';
 
 class AdventureGameController extends GetxController {
    RxList allgame = [].obs;

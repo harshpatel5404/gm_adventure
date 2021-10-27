@@ -1,4 +1,4 @@
-package com.example.gm_adventure
+package com.harsh.adventuregame
 
 import io.flutter.embedding.android.FlutterActivity
 

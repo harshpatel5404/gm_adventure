@@ -1,10 +1,12 @@
+import 'package:adventuregame/controller/getcontroller.dart';
+import 'package:adventuregame/view/widgets/drawer.dart';
+import 'package:adventuregame/view/widgets/gameslider.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/controller/getcontroller.dart';
-import 'package:gm_adventure/view/screens/favorite_game.dart';
-import 'package:gm_adventure/view/widgets/drawer.dart';
-import 'package:gm_adventure/view/widgets/gameslider.dart';
+
+import 'favorite_game.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    
     super.initState();
     _pageController = PageController();
   }
@@ -31,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -62,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             items: <BottomNavyBarItem>[
               BottomNavyBarItem(
-                icon: Icon(Icons.apps),
+                icon: Icon(Icons.home),
                 title: Text('Home'),
                 activeColor: Colors.red,
               ),

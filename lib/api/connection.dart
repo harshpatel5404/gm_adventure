@@ -1,9 +1,8 @@
 import 'dart:convert';
 
+import 'package:adventuregame/model/allgameresponse.dart';
+import 'package:adventuregame/model/topgamesresponse.dart';
 import 'package:get/get.dart';
-import 'package:gm_adventure/controller/getcontroller.dart';
-import 'package:gm_adventure/model/allgameresponse.dart';
-import 'package:gm_adventure/model/topgamesresponse.dart';
 import 'package:http/http.dart' as http;
 
 const baseURL = "https://kurminfotech.in/gamemania/";
