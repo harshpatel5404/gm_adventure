@@ -16,7 +16,7 @@ class Drawerbar extends StatelessWidget {
                 accountName: Text("Adventure Game", ),
                 accountEmail: Text(""),
                 currentAccountPicture: CircleAvatar(
-                backgroundImage:  AssetImage("assets/logo.png"),
+                backgroundImage:  AssetImage("assets/icon.png"),
                 ),
               ),
             ),

@@ -14,18 +14,33 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-        const Duration(seconds: 3),
-        () => Get.off(HomeScreen()));
+    Timer(const Duration(seconds: 3), () => Get.off(HomeScreen()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.white,
-      height: MediaQuery.of(context).size.height,
-      child: Center(
-        child: Image.asset("assets/logo.png"),
+    return Scaffold(
+      body: Container(
+        color: Colors.black,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 170,
+              width: 170,
+              child: Image.asset(
+                "assets/logo.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 20,),
+            Text("Adventure Game",style: TextStyle(fontSize: 23, 
+            fontWeight: FontWeight.bold
+            ,color: Colors.white),)
+          ],
+        ),
       ),
     );
   }
