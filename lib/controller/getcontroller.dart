@@ -8,6 +8,7 @@ class Controller extends GetxController{
   RxBool isIntenet = false.obs;
   RxBool isPermission = false.obs;
   RxBool isFavorite = false.obs;
+  RxBool isAds = false.obs;
 
 
   // Future<bool> internetConnection() async {

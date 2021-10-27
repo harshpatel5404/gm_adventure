@@ -17,6 +17,12 @@ class FavoriteGame{
   @HiveField(3)
   final image;
 
-  FavoriteGame({this.id, this.website, this.name, this.image});
+  @HiveField(4)
+  final description;
+
+  @HiveField(5)
+  final icon;
+
+  FavoriteGame({this.description, this.icon, this.id, this.website, this.name, this.image});
 }
  

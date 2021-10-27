@@ -17,6 +17,8 @@ class FavoriteGameAdapter extends TypeAdapter<FavoriteGame> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return FavoriteGame(
+      description: fields[4] as dynamic,
+      icon: fields[5] as dynamic,
       id: fields[0] as dynamic,
       website: fields[2] as dynamic,
       name: fields[1] as dynamic,
@@ -27,7 +29,7 @@ class FavoriteGameAdapter extends TypeAdapter<FavoriteGame> {
   @override
   void write(BinaryWriter writer, FavoriteGame obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +37,11 @@ class FavoriteGameAdapter extends TypeAdapter<FavoriteGame> {
       ..writeByte(2)
       ..write(obj.website)
       ..writeByte(3)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(4)
+      ..write(obj.description)
+      ..writeByte(5)
+      ..write(obj.icon);
   }
 
   @override

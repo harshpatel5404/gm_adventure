@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gm_adventure/view/screens/favorite_game.dart';
 import 'package:share/share.dart';
 
 class Drawerbar extends StatelessWidget {
@@ -16,10 +18,11 @@ class Drawerbar extends StatelessWidget {
                 accountName: Text("Adventure Game", ),
                 accountEmail: Text(""),
                 currentAccountPicture: CircleAvatar(
-                backgroundImage:  AssetImage("assets/icon.png"),
+                backgroundImage:  AssetImage("assets/logo.png"),
                 ),
               ),
             ),
+           
             ListTile(
               title: Text("Rating"),
               onTap: () {},

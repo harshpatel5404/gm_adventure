@@ -81,7 +81,9 @@ class _GameSliderState extends State<GameSlider> {
                                             Obx(
                                               () => topgamecontroller
                                                       .isLoading.value
-                                                  ? GameDescription(
+                                                  ?
+                                                  
+                                                   GameDescription(
                                                       name: name,
                                                       desc: description,
                                                       icon: icon,
@@ -188,6 +190,7 @@ class _GameSliderState extends State<GameSlider> {
                               Container(
                                 height:
                                     MediaQuery.of(context).size.height * .11,
+                                    width : MediaQuery.of(context).size.width* .25,
                                 decoration: BoxDecoration(
                                   color: Colors.grey,
                                   borderRadius: BorderRadius.circular(15),
@@ -227,12 +230,7 @@ class _GameSliderState extends State<GameSlider> {
                                       favoriteController.favoritelist.remove(
                                           adventureGameController
                                               .allgame[index].id);
-
-                                      // print("remove favelist");
-                                      // print(favoriteController.favoritelist);
                                     } else {
-                                      // print("call else : ");
-                                      // print(favoriteController.favoritelist);
                                       var name = adventureGameController
                                           .allgame[index].name;
                                       var img = adventureGameController
@@ -241,10 +239,16 @@ class _GameSliderState extends State<GameSlider> {
                                           .allgame[index].id;
                                       var website = adventureGameController
                                           .allgame[index].website;
+                                      var description = adventureGameController
+                                          .allgame[index].description;
+                                      var icon = adventureGameController
+                                          .allgame[index].icon;
 
                                       FavoriteGame favoriteGame = FavoriteGame(
                                           name: name,
                                           image: img,
+                                          description: description,
+                                          icon: icon,
                                           id: id,
                                           website: website);
                                       var box =
@@ -259,8 +263,6 @@ class _GameSliderState extends State<GameSlider> {
                                           adventureGameController
                                               .allgame[index].id);
 
-                                      // print("add favelist");
-                                      // print(favoriteController.favoritelist);
 
                                     }
                                   },
