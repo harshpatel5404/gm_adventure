@@ -8,6 +8,7 @@ import 'package:gm_adventure/controller/favarite_controller.dart';
 import 'package:gm_adventure/controller/getcontroller.dart';
 import 'package:gm_adventure/controller/topgame.dart';
 import 'package:gm_adventure/model/favorite_model.dart';
+import 'package:gm_adventure/view/screens/game_description.dart';
 import 'package:gm_adventure/view/screens/gamewebview.dart';
 import 'package:hive/hive.dart';
 
@@ -25,7 +26,6 @@ class _GameSliderState extends State<GameSlider> {
 
   Controller controller = Get.put(Controller());
   FavoriteController favoriteController = Get.put(FavoriteController());
-
 
   @override
   void initState() {
@@ -66,15 +66,28 @@ class _GameSliderState extends State<GameSlider> {
                                 () => topgamecontroller.isLoading.value
                                     ? InkWell(
                                         onTap: () {
+                                          var name = topgamecontroller
+                                              .topgamelist[itemIndex].name;
+                                          var description = topgamecontroller
+                                              .topgamelist[itemIndex]
+                                              .description;
+                                          var website = topgamecontroller
+                                              .topgamelist[itemIndex].website;
+                                          var image = topgamecontroller
+                                              .topgamelist[itemIndex].image;
+                                          var icon = topgamecontroller
+                                              .topgamelist[itemIndex].icon;
                                           Get.to(
                                             Obx(
                                               () => topgamecontroller
                                                       .isLoading.value
-                                                  ? GameWebview(
-                                                      weburl: topgamecontroller
-                                                          .topgamelist[
-                                                              itemIndex]
-                                                          .website)
+                                                  ? GameDescription(
+                                                      name: name,
+                                                      desc: description,
+                                                      icon: icon,
+                                                      image: image,
+                                                      website: website,
+                                                    )
                                                   : const SizedBox(),
                                             ),
                                           );
@@ -144,12 +157,23 @@ class _GameSliderState extends State<GameSlider> {
                     (BuildContext context, int index) {
                   return InkWell(
                     onTap: () {
+                      var name = adventureGameController.allgame[index].name;
+                      var description =
+                          adventureGameController.allgame[index].description;
+                      var website =
+                          adventureGameController.allgame[index].website;
+                      var image = adventureGameController.allgame[index].image;
+                      var icon = adventureGameController.allgame[index].icon;
                       Get.to(
                         Obx(
-                          () => adventureGameController.isLoading.value
-                              ? GameWebview(
-                                  weburl: adventureGameController
-                                      .allgame[index].website)
+                          () => topgamecontroller.isLoading.value
+                              ? GameDescription(
+                                  name: name,
+                                  desc: description,
+                                  icon: icon,
+                                  image: image,
+                                  website: website,
+                                )
                               : const SizedBox(),
                         ),
                       );
@@ -190,11 +214,11 @@ class _GameSliderState extends State<GameSlider> {
                                 top: 5,
                                 child: InkWell(
                                   onTap: () async {
-                                    print(favoriteController.favoritelist);
+                                    // print(favoriteController.favoritelist);
                                     if (favoriteController.favoritelist
                                         .contains(adventureGameController
                                             .allgame[index].id)) {
-                                      print("call id : ");
+                                      // print("call id : ");
                                       final box = Hive.box<FavoriteGame>(
                                           'favoritegame');
                                       box.delete(adventureGameController
@@ -204,11 +228,11 @@ class _GameSliderState extends State<GameSlider> {
                                           adventureGameController
                                               .allgame[index].id);
 
-                                      print("remove favelist");
-                                      print(favoriteController.favoritelist);
+                                      // print("remove favelist");
+                                      // print(favoriteController.favoritelist);
                                     } else {
-                                      print("call else : ");
-                                      print(favoriteController.favoritelist);
+                                      // print("call else : ");
+                                      // print(favoriteController.favoritelist);
                                       var name = adventureGameController
                                           .allgame[index].name;
                                       var img = adventureGameController
@@ -226,12 +250,15 @@ class _GameSliderState extends State<GameSlider> {
                                       var box =
                                           await Hive.openBox<FavoriteGame>(
                                               'favoritegame');
-                                      box.put(adventureGameController.allgame[index].id,favoriteGame);
+                                      box.put(
+                                          adventureGameController
+                                              .allgame[index].id,
+                                          favoriteGame);
 
                                       favoriteController.favoritelist.add(
                                           adventureGameController
                                               .allgame[index].id);
-                                      
+
                                       // print("add favelist");
                                       // print(favoriteController.favoritelist);
 
