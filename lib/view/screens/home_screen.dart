@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    
     super.initState();
     _pageController = PageController();
   }
@@ -34,48 +33,61 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      // backgroundColor: Colors.black12,
-        appBar: AppBar(
-          title: Text("Adventure Game"),
-          centerTitle: true,
-        ),
-        drawer: const Drawerbar(),
-        body: SizedBox.expand(
-          child: PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() => controller.currentIndex.value = index);
-            },
-            children: const <Widget>[
-            GameSlider(),
-             FavoriteGameScreen()
-            ],
-          ),
-        ),
-        bottomNavigationBar: Obx(
-          () => BottomNavyBar(
-            backgroundColor: Colors.white,
-            selectedIndex: controller.currentIndex.value,
-            onItemSelected: (index) {
-              controller.currentIndex.value = index;
-              _pageController.jumpToPage(index);
-            },
-            items: <BottomNavyBarItem>[
-              BottomNavyBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Home'),
-                activeColor: Colors.red,
+    return Obx(
+      () => controller.isIntenet.value
+          ? Scaffold(
+              // backgroundColor: Colors.black12,
+              appBar: AppBar(
+                title: Text("Adventure Game"),
+                centerTitle: true,
               ),
-              BottomNavyBarItem(
-                  icon: Icon(Icons.favorite),
-                  title: Text('Favorite'),
-                  activeColor: Colors.green),
-            ],
-          ),
-        ));
+              drawer: const Drawerbar(),
+              body: SizedBox.expand(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() => controller.currentIndex.value = index);
+                  },
+                  children: const <Widget>[GameSlider(), FavoriteGameScreen()],
+                ),
+              ),
+              bottomNavigationBar: Obx(
+                () => BottomNavyBar(
+                  backgroundColor: Colors.white,
+                  selectedIndex: controller.currentIndex.value,
+                  onItemSelected: (index) {
+                    controller.currentIndex.value = index;
+                    _pageController.jumpToPage(index);
+                  },
+                  items: <BottomNavyBarItem>[
+                    BottomNavyBarItem(
+                      icon: Icon(Icons.home),
+                      title: Text('Home'),
+                      activeColor: Colors.red,
+                    ),
+                    BottomNavyBarItem(
+                        icon: Icon(Icons.favorite),
+                        title: Text('Favorite'),
+                        activeColor: Colors.green),
+                  ],
+                ),
+              ))
+          : Scaffold(
+            backgroundColor: Colors.black,
+              body: AlertDialog(
+                title: Text("Alert"),
+                content: Text("You are Not Connected to the Internet"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        controller.getConnect();
+                      },
+                      child: Text("Ok"))
+                ],
+              ),
+            ),
+    );
   }
 }

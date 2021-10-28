@@ -9,7 +9,19 @@ class Controller extends GetxController{
   RxBool isPermission = false.obs;
   RxBool isFavorite = false.obs;
   RxBool isAds = false.obs;
-
+  void getConnect() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+       isIntenet.value = false;
+      //  print("false");
+    } else if (connectivityResult == ConnectivityResult.mobile) {
+      isIntenet.value = true;
+      //  print("mobile true");
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      isIntenet.value = true;
+      //  print("wifi true");
+    }
+  }
 
   // Future<bool> internetConnection() async {
   //   var connectivityResult = await (Connectivity().checkConnectivity());

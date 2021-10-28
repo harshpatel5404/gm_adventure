@@ -11,14 +11,17 @@ import 'package:unity_ads_plugin/unity_ads.dart';
 import 'view/screens/splash_screen.dart';
 
 FavoriteController favoriteController = Get.put(FavoriteController());
+Controller controller = Get.put(Controller());
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  controller.getConnect();
+
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   Hive.registerAdapter(FavoriteGameAdapter());
   favoriteController.getFavlist();
-   SystemChrome.setPreferredOrientations([
+  SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
   runApp(MyApp());
