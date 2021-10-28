@@ -26,6 +26,9 @@ class GameDescription extends StatefulWidget {
 }
 
 class _GameDescriptionState extends State<GameDescription> {
+
+
+
   Controller controller = Get.put(Controller());
 
   void loadVideoAd() async {
@@ -63,7 +66,9 @@ controller.isAds.value =true;
 
   @override
   Widget build(BuildContext context) {
-   
+  //  print("imggg");
+  //  print(widget.image);
+
     return Obx(
       () => controller.isAds.value
           ? Scaffold(

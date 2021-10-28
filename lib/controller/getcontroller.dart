@@ -13,13 +13,10 @@ class Controller extends GetxController{
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
        isIntenet.value = false;
-      //  print("false");
     } else if (connectivityResult == ConnectivityResult.mobile) {
       isIntenet.value = true;
-      //  print("mobile true");
     } else if (connectivityResult == ConnectivityResult.wifi) {
       isIntenet.value = true;
-      //  print("wifi true");
     }
   }
 
